@@ -150,8 +150,9 @@
       font-weight: 600;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--red);
+      color: #FFA500;
       margin-bottom: 20px;
+      margin-top: 4px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -162,10 +163,11 @@
       display: block;
       width: 32px;
       height: 2px;
-      background: var(--red);
+      background: #FFA500;
     }
     .hero-logo-mark {
-      width: 280px;
+      width: 420px;
+      max-width: 90vw;
       height: auto;
       margin-bottom: 8px;
     }
@@ -696,72 +698,41 @@
       position: relative;
       display: inline-block;
       margin-bottom: 16px;
-    }
-    .fire-text {
       font-family: var(--ff-display);
       font-size: clamp(3.5rem, 9vw, 8rem);
       letter-spacing: 0.06em;
       line-height: 1;
+    }
+    .fire-letter {
+      display: inline-block;
       background: linear-gradient(
         to top,
         #fff700 0%,
-        #ffaa00 18%,
-        #ff6600 38%,
-        #ff2200 58%,
-        #cc0000 78%,
+        #ffaa00 15%,
+        #ff6600 35%,
+        #ff2200 60%,
+        #cc0000 80%,
         #880000 100%
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: flicker 2.4s ease-in-out infinite alternate;
-      filter: drop-shadow(0 0 8px rgba(255,100,0,0.7))
-              drop-shadow(0 0 20px rgba(255,50,0,0.5))
-              drop-shadow(0 0 40px rgba(200,0,0,0.3));
+      animation: letterFlicker var(--dur) var(--delay) ease-in-out infinite alternate;
+      /* letter-spacing handled by wrap */
     }
-    @keyframes flicker {
-      0%   { filter: drop-shadow(0 0 6px rgba(255,120,0,0.8))  drop-shadow(0 0 18px rgba(255,60,0,0.6))  drop-shadow(0 0 35px rgba(200,0,0,0.35)); opacity: 1;    }
-      15%  { filter: drop-shadow(0 0 10px rgba(255,160,0,0.9)) drop-shadow(0 0 28px rgba(255,80,0,0.7))  drop-shadow(0 0 50px rgba(220,0,0,0.4));  opacity: 0.97; }
-      30%  { filter: drop-shadow(0 0 4px rgba(255,80,0,0.6))   drop-shadow(0 0 14px rgba(255,40,0,0.5))  drop-shadow(0 0 28px rgba(180,0,0,0.25)); opacity: 0.93; }
-      50%  { filter: drop-shadow(0 0 12px rgba(255,180,0,1))   drop-shadow(0 0 32px rgba(255,100,0,0.8)) drop-shadow(0 0 60px rgba(230,0,0,0.45)); opacity: 1;    }
-      70%  { filter: drop-shadow(0 0 5px rgba(255,90,0,0.65))  drop-shadow(0 0 16px rgba(255,50,0,0.5))  drop-shadow(0 0 30px rgba(190,0,0,0.28)); opacity: 0.95; }
-      85%  { filter: drop-shadow(0 0 9px rgba(255,140,0,0.85)) drop-shadow(0 0 24px rgba(255,70,0,0.65)) drop-shadow(0 0 45px rgba(210,0,0,0.38)); opacity: 0.98; }
-      100% { filter: drop-shadow(0 0 7px rgba(255,110,0,0.75)) drop-shadow(0 0 22px rgba(255,55,0,0.58)) drop-shadow(0 0 42px rgba(200,0,0,0.32)); opacity: 0.96; }
-    }
-    /* Flame lick pseudo-elements */
-    .fire-text-wrap::before,
-    .fire-text-wrap::after {
-      content: 'FENIX CYCLING';
-      font-family: var(--ff-display);
-      font-size: clamp(3.5rem, 9vw, 8rem);
-      letter-spacing: 0.06em;
-      line-height: 1;
-      position: absolute;
-      top: 0; left: 0;
+    .fire-letter.space {
+      display: inline-block;
+      width: 0.35em;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      pointer-events: none;
     }
-    .fire-text-wrap::before {
-      background: linear-gradient(to top, rgba(255,200,0,0.15) 0%, transparent 60%);
-      animation: flameLick1 1.8s ease-in-out infinite alternate;
-      transform-origin: bottom center;
-    }
-    .fire-text-wrap::after {
-      background: linear-gradient(to top, rgba(255,100,0,0.1) 0%, transparent 50%);
-      animation: flameLick2 2.2s ease-in-out infinite alternate;
-      transform-origin: bottom center;
-    }
-    @keyframes flameLick1 {
-      0%   { transform: skewX(-1deg) scaleY(1);    opacity: 0.6; }
-      50%  { transform: skewX(1.5deg) scaleY(1.02); opacity: 0.8; }
-      100% { transform: skewX(-0.5deg) scaleY(0.99); opacity: 0.5; }
-    }
-    @keyframes flameLick2 {
-      0%   { transform: skewX(1deg) scaleY(1.01);  opacity: 0.4; }
-      50%  { transform: skewX(-1deg) scaleY(0.99); opacity: 0.6; }
-      100% { transform: skewX(0.8deg) scaleY(1.02); opacity: 0.3; }
+    @keyframes letterFlicker {
+      0%   { filter: drop-shadow(0 0 5px rgba(255,120,0,0.9))  drop-shadow(0 0 12px rgba(255,60,0,0.7));  opacity: 1;    transform: scaleY(1)    skewX(0deg);   }
+      12%  { filter: drop-shadow(0 0 9px rgba(255,200,0,1))    drop-shadow(0 0 22px rgba(255,100,0,0.8)); opacity: 0.97; transform: scaleY(1.03) skewX(-1deg);  }
+      27%  { filter: drop-shadow(0 0 3px rgba(255,60,0,0.6))   drop-shadow(0 0 8px rgba(200,30,0,0.5));   opacity: 0.88; transform: scaleY(0.97) skewX(1.5deg); }
+      45%  { filter: drop-shadow(0 0 11px rgba(255,180,0,1))   drop-shadow(0 0 28px rgba(255,80,0,0.9));  opacity: 1;    transform: scaleY(1.04) skewX(-0.5deg);}
+      63%  { filter: drop-shadow(0 0 4px rgba(255,80,0,0.65))  drop-shadow(0 0 10px rgba(220,40,0,0.55)); opacity: 0.91; transform: scaleY(0.98) skewX(1deg);   }
+      80%  { filter: drop-shadow(0 0 8px rgba(255,150,0,0.9))  drop-shadow(0 0 20px rgba(255,70,0,0.75)); opacity: 0.98; transform: scaleY(1.02) skewX(-1.2deg);}
+      100% { filter: drop-shadow(0 0 6px rgba(255,110,0,0.8))  drop-shadow(0 0 16px rgba(255,50,0,0.65)); opacity: 0.95; transform: scaleY(1)    skewX(0.5deg); }
     }
   </style>
 </head>
@@ -771,8 +742,7 @@
 <nav>
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo">
-      <img src="logo-icon.svg" alt="FENIX Cycling Phoenix" class="nav-logo-icon" />
-      <div class="nav-logo-text">FEN<span>I</span>X</div>
+      <img src="logo-lockup.svg" alt="FENIX Cycling" class="nav-logo-icon" style="width:140px; height:auto;" />
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -788,13 +758,13 @@
   <div class="hero-bg"></div>
   <canvas id="ember-canvas"></canvas>
   <div class="container hero-content">
-    <div class="hero-eyebrow">Yorba Linda, CA — Est. 2012</div>
-
-    <img src="logo-lockup.svg" alt="FENIX Cycling" class="hero-logo-mark" />
+    <img src="logo-icon.svg" alt="FENIX Cycling Phoenix" class="hero-logo-mark" />
 
     <div class="fire-text-wrap">
-      <span class="fire-text">FENIX CYCLING</span>
+      <span class="fire-letter" style="--dur:2.1s;--delay:0.0s">F</span><span class="fire-letter" style="--dur:1.8s;--delay:0.15s">E</span><span class="fire-letter" style="--dur:2.4s;--delay:0.05s">N</span><span class="fire-letter" style="--dur:1.6s;--delay:0.22s">I</span><span class="fire-letter" style="--dur:2.2s;--delay:0.10s">X</span><span class="fire-letter space"> </span><span class="fire-letter" style="--dur:1.9s;--delay:0.18s">C</span><span class="fire-letter" style="--dur:2.3s;--delay:0.08s">Y</span><span class="fire-letter" style="--dur:1.7s;--delay:0.25s">C</span><span class="fire-letter" style="--dur:2.0s;--delay:0.12s">L</span><span class="fire-letter" style="--dur:2.5s;--delay:0.03s">I</span><span class="fire-letter" style="--dur:1.85s;--delay:0.20s">N</span><span class="fire-letter" style="--dur:2.15s;--delay:0.07s">G</span>
     </div>
+
+    <div class="hero-eyebrow">Yorba Linda, CA — Est. 2012</div>
 
     <p class="hero-sub">Honest. Reliable. Passionate.</p>
     <p class="hero-tagline">
@@ -1169,45 +1139,65 @@
     const canvas = document.getElementById('ember-canvas');
     const ctx = canvas.getContext('2d');
     let W, H, particles = [];
+    const mouse = { x: -999, y: -999 };
+    const REPEL_RADIUS = 80;
+    const REPEL_FORCE  = 3.5;
 
     function resize() {
       W = canvas.width = window.innerWidth;
       H = canvas.height = document.getElementById('hero').offsetHeight;
     }
 
+    // Track mouse over hero
+    canvas.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+
     function Ember(forceBottom) {
       this.forceBottom = forceBottom || false;
       this.reset();
     }
     Ember.prototype.reset = function() {
-      // Bottom-heavy spawn: 70% of embers start in bottom 35% of hero
       const bottomZone = this.forceBottom || Math.random() < 0.7;
       this.x = Math.random() * W;
       this.y = H + Math.random() * 12;
-      // Size: bottom embers bigger (more heat), upper embers smaller (cooling)
       this.size = bottomZone
-        ? Math.random() * 4 + 1.5    // 1.5–5.5px near bottom
-        : Math.random() * 2 + 0.4;   // 0.4–2.4px higher up
-      // Speed: bottom embers rise faster
+        ? Math.random() * 4 + 1.5
+        : Math.random() * 2 + 0.4;
       this.speedY = bottomZone
-        ? Math.random() * 2.2 + 0.8  // fast
-        : Math.random() * 1.0 + 0.3; // slow drift
+        ? Math.random() * 2.2 + 0.8
+        : Math.random() * 1.0 + 0.3;
       this.speedX = (Math.random() - 0.5) * (bottomZone ? 1.2 : 0.5);
+      this.vx = 0; // repulsion velocity
+      this.vy = 0;
       this.life = 0;
       this.maxLife = Math.random() * 260 + 100;
-      // Color: hue 0–40 = deep red → orange → amber
       const hue = Math.floor(Math.random() * 40);
-      const light = Math.floor(Math.random() * 20 + 55); // 55–75% lightness
+      const light = Math.floor(Math.random() * 20 + 55);
       this.color = `hsl(${hue}, 100%, ${light}%)`;
-      // Occasional bright flare
       this.flare = Math.random() < 0.12;
     };
     Ember.prototype.update = function() {
-      this.x += this.speedX + Math.sin(this.life * 0.035) * 0.45;
-      this.y -= this.speedY;
+      // Mouse repulsion
+      const dx = this.x - mouse.x;
+      const dy = this.y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < REPEL_RADIUS && dist > 0) {
+        const force = (REPEL_RADIUS - dist) / REPEL_RADIUS * REPEL_FORCE;
+        this.vx += (dx / dist) * force;
+        this.vy += (dy / dist) * force;
+      }
+      // Dampen repulsion velocity over time
+      this.vx *= 0.88;
+      this.vy *= 0.88;
+
+      this.x += this.speedX + Math.sin(this.life * 0.035) * 0.45 + this.vx;
+      this.y -= this.speedY - this.vy;
       this.life++;
       const progress = this.life / this.maxLife;
-      // Fade in fast, hold, fade out
       if (progress < 0.15) {
         this.alpha = (progress / 0.15) * (this.flare ? 0.85 : 0.55);
       } else {
@@ -1218,7 +1208,6 @@
     Ember.prototype.draw = function() {
       ctx.globalAlpha = this.alpha;
       if (this.flare && this.size > 2) {
-        // Glow ring for flares
         const grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2.5);
         grd.addColorStop(0, this.color);
         grd.addColorStop(1, 'transparent');
@@ -1235,15 +1224,15 @@
 
     function init() {
       resize();
-      // 150 total: 110 bottom-zone embers + 40 free-floating
+      // 300 total: 220 bottom-zone + 80 free-floating
       particles = [
-        ...Array.from({ length: 110 }, () => {
+        ...Array.from({ length: 220 }, () => {
           const e = new Ember(true);
-          e.y = H - Math.random() * (H * 0.35); // seed in bottom 35%
+          e.y = H - Math.random() * (H * 0.35);
           e.life = Math.floor(Math.random() * e.maxLife);
           return e;
         }),
-        ...Array.from({ length: 40 }, () => {
+        ...Array.from({ length: 80 }, () => {
           const e = new Ember(false);
           e.y = Math.random() * H;
           e.life = Math.floor(Math.random() * e.maxLife);
