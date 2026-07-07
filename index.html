@@ -392,6 +392,28 @@
       margin-top: 1px;
     }
 
+    /* ─── COMING SOON ────────────────────────────────────── */
+    #coming-soon {
+      position: relative;
+      overflow: hidden;
+      background-image: url('Man_sitting_on_park_bench.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    #coming-soon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 1;
+      pointer-events: none;
+    }
+    #coming-soon .container {
+      position: relative;
+      z-index: 2;
+    }
+
     /* ─── E-BIKE FEATURE ─────────────────────────────────── */
     #ebike {
       padding: 80px 0;
