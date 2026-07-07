@@ -110,6 +110,20 @@
       transition: background 0.2s !important;
     }
     .nav-cta:hover { background: var(--red-dim) !important; color: var(--white) !important; }
+    #lang-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--light);
+      font-family: var(--ff-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 6px 12px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    #lang-toggle:hover { border-color: var(--white); color: var(--white); }
 
     /* ─── HERO ───────────────────────────────────────────── */
     #hero {
@@ -373,6 +387,11 @@
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
+      min-width: 0;
+    }
+    .ebike-inner > * {
+      min-width: 0;
+      overflow: hidden;
     }
     .ebike-badge {
       display: inline-flex;
@@ -427,6 +446,7 @@
     /* ─── REVIEW CAROUSELS ───────────────────────────────── */
     .review-carousel {
       width: 100%;
+      max-width: 100%;
       position: relative;
       overflow: hidden;
       border-radius: 4px;
@@ -434,16 +454,22 @@
     .review-track {
       display: flex;
       transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+      width: 100%;
     }
     .review-card {
       min-width: 100%;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
       background: var(--mid);
       border: 1px solid var(--border);
       border-radius: 4px;
-      padding: 28px 28px 24px;
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     .review-header {
       display: flex;
@@ -476,6 +502,11 @@
       color: var(--light);
       line-height: 1.75;
       font-style: italic;
+    }
+    .review-highlight {
+      color: #ffaa00;
+      font-weight: 700;
+      font-style: normal;
     }
     .review-text::before { content: '\201C'; color: var(--red); font-size: 1.4rem; line-height: 0; vertical-align: -0.3em; margin-right: 2px; font-style: normal; }
     .review-text::after  { content: '\201D'; color: var(--red); font-size: 1.4rem; line-height: 0; vertical-align: -0.3em; margin-left: 2px;  font-style: normal; }
@@ -745,10 +776,15 @@
       <img src="logo-lockup.svg" alt="FENIX Cycling" class="nav-logo-icon" style="width:140px; height:auto;" />
     </a>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#ebike">E-Bike</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="tel:+1" class="nav-cta">Call Us</a></li>
+      <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+      <li><a href="#ebike" data-en="E-Bike" data-es="E-Bike">E-Bike</a></li>
+      <li><a href="#about" data-en="About" data-es="Nosotros">About</a></li>
+      <li><a href="tel:+1" class="nav-cta" data-en="Call Us" data-es="Llámanos">Call Us</a></li>
+      <li>
+        <button id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
+          <span id="lang-label">ES</span>
+        </button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -766,30 +802,30 @@
 
     <div class="hero-eyebrow">Yorba Linda, CA — Est. 2012</div>
 
-    <p class="hero-sub">Honest. Reliable. Passionate.</p>
+    <p class="hero-sub" data-en="Honest. Reliable. Passionate." data-es="Honestos. Confiables. Apasionados.">Honest. Reliable. Passionate.</p>
     <p class="hero-tagline">
-      <strong>Yorba Linda's bike shop since 2012.</strong> Riders from Riverside to the OC coast make the drive — because when you want it done right, you find the right mechanic.
+      <strong data-en="Riders from Riverside to the OC coast make the drive" data-es="Ciclistas de Riverside hasta la costa de OC hacen el viaje">Riders from Riverside to the OC coast make the drive</strong> — <span data-en="because when you want it done right, you find the right mechanic." data-es="porque cuando quieres que se haga bien, encuentras al mecánico correcto.">because when you want it done right, you find the right mechanic.</span>
     </p>
     <div class="hero-actions">
-      <a href="tel:+1" class="btn-primary">Call the Shop</a>
-      <a href="#services" class="btn-secondary">View Services</a>
+      <a href="tel:+1" class="btn-primary" data-en="Call the Shop" data-es="Llama a la Tienda">Call the Shop</a>
+      <a href="#services" class="btn-secondary" data-en="View Services" data-es="Ver Servicios">View Services</a>
     </div>
     <div class="hero-stats">
       <div>
         <div class="stat-num">5.0<span>★</span></div>
-        <div class="stat-label">Google Rating</div>
+        <div class="stat-label" data-en="Google Rating" data-es="Calificación Google">Google Rating</div>
       </div>
       <div>
         <div class="stat-num">4.8<span>★</span></div>
-        <div class="stat-label">Yelp Rating</div>
+        <div class="stat-label" data-en="Yelp Rating" data-es="Calificación Yelp">Yelp Rating</div>
       </div>
       <div>
         <div class="stat-num">240<span>+</span></div>
-        <div class="stat-label">Combined Reviews</div>
+        <div class="stat-label" data-en="Combined Reviews" data-es="Reseñas Combinadas">Combined Reviews</div>
       </div>
       <div>
         <div class="stat-num">12<span>+</span></div>
-        <div class="stat-label">Years Serving SoCal</div>
+        <div class="stat-label" data-en="Years Serving SoCal" data-es="Años Sirviendo SoCal">Years Serving SoCal</div>
       </div>
     </div>
   </div>
@@ -941,8 +977,8 @@
               <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Ozzy is the best mechanic I've ever taken my bike to. Honest, fast, and actually explains what he found. My bike rides better than when I bought it.</p>
-            <div class="review-author">— Michael R.</div>
+            <p class="review-text">My motor went out on my 2023 Santa Cruz Heckler. Ozzy ordered a new Shimano motor, handled the warranty, fixed my suspension, replaced the screen, and dialed in my brakes. <span class="review-highlight">My bike feels brand new again.</span></p>
+            <div class="review-author">— Matt K., Lake Forest, CA</div>
           </div>
 
           <div class="review-card">
@@ -950,8 +986,8 @@
               <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">This place is the real deal. Small shop, huge expertise. Ozzy treated my road bike like it was his own. I won't go anywhere else in the IE or OC.</p>
-            <div class="review-author">— Sara M.</div>
+            <p class="review-text">My derailleur was bent — another shop missed it completely. Ozzy caught it immediately and <span class="review-highlight">never once tried to sell me something I didn't need.</span> Looks like I found my regular LBS!</p>
+            <div class="review-author">— Tuan D., Anaheim, CA</div>
           </div>
 
           <div class="review-card">
@@ -959,8 +995,8 @@
               <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Drove from Corona specifically because of the reviews and was not disappointed. Fair price, no upsell, done the same day. This is my shop from now on.</p>
-            <div class="review-author">— David T.</div>
+            <p class="review-text">I've cycled for 45 years and <span class="review-highlight">Fenix Cycling is the best bike shop I've ever been to.</span> The other shops in the area don't come close.</p>
+            <div class="review-author">— Eric N., Local Guide</div>
           </div>
 
           <div class="review-card">
@@ -968,8 +1004,8 @@
               <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Came in with a list of issues from another shop. Ozzy looked at it and said half the items didn't need to be done. That kind of honesty is rare — and it's why I'll be back.</p>
-            <div class="review-author">— Carlos V.</div>
+            <p class="review-text">Ozzy and Fenix are <span class="review-highlight">a much needed throwback to when expertise and integrity ruled.</span> I've had 3 bikes built here and referred at least 5 others — 2 were out-of-state build and ship!</p>
+            <div class="review-author">— Mark G., Anaheim, CA</div>
           </div>
 
           <div class="review-card">
@@ -977,8 +1013,8 @@
               <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Brought in my e-bike with an electrical issue two other shops couldn't figure out. Ozzy diagnosed it in 20 minutes. Incredible knowledge and zero attitude.</p>
-            <div class="review-author">— Jennifer L.</div>
+            <p class="review-text">I've been going here for the last 3 years. <span class="review-highlight">Insane service and legit unbeatable prices.</span> I moved further away but always come back. 10/10.</p>
+            <div class="review-author">— Jaymond H.</div>
           </div>
 
           <div class="review-card">
@@ -986,8 +1022,8 @@
               <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Best bike shop in the area, period. Quick turnaround, competitive pricing, and Ozzy actually rides so he understands what you need. Highly recommend.</p>
-            <div class="review-author">— Kevin B.</div>
+            <p class="review-text">I don't care if it's 50+ or 100+ miles away. <span class="review-highlight">They are loyal to me so it is my pleasure to show my loyalty back.</span> They don't treat you like a customer — they treat you like family.</p>
+            <div class="review-author">— Wes O., Carlsbad, CA</div>
           </div>
 
           <div class="review-card">
@@ -995,8 +1031,8 @@
               <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Took my mountain bike in for a full overhaul. Ozzy went through everything and only charged me for what actually needed work. Refreshing to find a mechanic you can trust.</p>
-            <div class="review-author">— Anthony G.</div>
+            <p class="review-text">Needed repairs on short notice so our grandson could take the bike back to college after winter break. <span class="review-highlight">Accurate estimate, no unexpected add-ons, done exactly when promised.</span></p>
+            <div class="review-author">— John R., San Francisco, CA</div>
           </div>
 
           <div class="review-card">
@@ -1004,8 +1040,8 @@
               <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Same-day service on a Saturday. Brought in a flat and he also caught my brake pads were nearly gone. Quick, honest, affordable. Exactly what a local shop should be.</p>
-            <div class="review-author">— Lisa T.</div>
+            <p class="review-text">I took my fork back to the original shop four times. Took it to Fenix once. <span class="review-highlight">When I got my bike back, the fork worked better than when I bought it.</span> Fenix is everything a bike shop should be.</p>
+            <div class="review-author">— Keith O., Brea, CA</div>
           </div>
 
           <div class="review-card">
@@ -1013,8 +1049,8 @@
               <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">Ozzy set up my suspension perfectly for my riding style. Night and day difference on the trail. This is what it means to have a mechanic who actually rides.</p>
-            <div class="review-author">— Ryan P.</div>
+            <p class="review-text">I was visiting from Utah and my SRAM AXS battery ran out. Many shops couldn't help. <span class="review-highlight">Fenix got me back on the road.</span> If I'm ever in the area again this is my first stop.</p>
+            <div class="review-author">— Joe C., Utah</div>
           </div>
 
           <div class="review-card">
@@ -1022,8 +1058,98 @@
               <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">My whole family brings their bikes here. Kids' bikes, road bikes, my wife's e-bike. Ozzy treats every single one with the same care. Loyal customer for life.</p>
-            <div class="review-author">— Mark D.</div>
+            <p class="review-text">I stopped in with a shifting issue. They tweaked my derailleur and had me on the road in 5 minutes — <span class="review-highlight">no charge.</span> I can hardly wait to bring my bike back for the full tuneup.</p>
+            <div class="review-author">— Kurt K., Yorba Linda, CA</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">This store has always been more than fair to me. <span class="review-highlight">When I've needed small parts, they've just given them to me, free of charge.</span> They've replaced tires quickly and at a fair price every time.</p>
+            <div class="review-author">— Salvador M., Local Guide</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text"><span class="review-highlight">Best bike shop in California!</span> Ossie is amazing. Come here and they will take care of you.</p>
+            <div class="review-author">— Armani R., Irvine, CA</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">Best bicycle repair shop in North OC hands down. <span class="review-highlight">Ozzy is so extremely helpful — he explains everything clearly and never makes you feel rushed.</span></p>
+            <div class="review-author">— Ryan S., Local Guide</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">I live in Eastvale and they're in Yorba Linda. <span class="review-highlight">I don't mind the drive</span> because they carry high quality parts, know what they're doing, and treat you like family. Totally fair prices.</p>
+            <div class="review-author">— Alfredo C., Eastvale, CA</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">A hidden gem! Fenix cycling is <span class="review-highlight">arguably one of the best bike shops in OC — and I've been to all of them.</span> Ozzy and his staff are knowledgeable, superb mechanics, and treat you like family.</p>
+            <div class="review-author">— Jordan K., Yorba Linda, CA</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">Ozzy went above and beyond, <span class="review-highlight">treating my bike like it was his own.</span> Anyone in the Anaheim Hills area should be going to Fenix. Support your LBS.</p>
+            <div class="review-author">— Alan M., Anaheim, CA</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">This bike shop is a jewel of <span class="review-highlight">good old fashioned roll-up-your-sleeves customer service.</span> I envy Yorba Linda for having this place.</p>
+            <div class="review-author">— Michael S., Local Guide</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">I was ready to try and return the bike after four failed repairs elsewhere. <span class="review-highlight">Fenix fixed it right the first time.</span> Expert repairs, very fair pricing, and they sponsor the local high school team.</p>
+            <div class="review-author">— Keith O., Brea, CA</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot google"></span> Google Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">I'm not local — showed up after a 4-hour ride needing a full drivetrain replacement. <span class="review-highlight">They took care of me on the spot.</span> Incredible hospitality and workmanship.</p>
+            <div class="review-author">— Oleksii G.</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-platform"><span class="platform-dot yelp"></span> Yelp Review</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">No one comes close to the customer service level Ozzy and his crew provide. <span class="review-highlight">Every time I stop by, Ozzy helps me on the spot because he knows how important my bike is to me.</span> You've got a customer for life.</p>
+            <div class="review-author">— Andrew W.</div>
           </div>
 
         </div>
@@ -1039,6 +1165,16 @@
         <button class="review-dot" onclick="goTo(7)"></button>
         <button class="review-dot" onclick="goTo(8)"></button>
         <button class="review-dot" onclick="goTo(9)"></button>
+        <button class="review-dot" onclick="goTo(10)"></button>
+        <button class="review-dot" onclick="goTo(11)"></button>
+        <button class="review-dot" onclick="goTo(12)"></button>
+        <button class="review-dot" onclick="goTo(13)"></button>
+        <button class="review-dot" onclick="goTo(14)"></button>
+        <button class="review-dot" onclick="goTo(15)"></button>
+        <button class="review-dot" onclick="goTo(16)"></button>
+        <button class="review-dot" onclick="goTo(17)"></button>
+        <button class="review-dot" onclick="goTo(18)"></button>
+        <button class="review-dot" onclick="goTo(19)"></button>
       </div>
     </div>
     <!-- END UNIFIED REVIEWS -->
@@ -1254,9 +1390,194 @@
   })();
 </script>
 
-<!-- ── REVIEW CAROUSEL JS ──────────────────────────────────── -->
+<!-- ── LANGUAGE TOGGLE ────────────────────────────────────── -->
 <script>
-  const TOTAL = 10;
+  let currentLang = 'en';
+
+  const translations = {
+    // NAV
+    'nav-services':    { en: 'Services',     es: 'Servicios' },
+    'nav-ebike':       { en: 'E-Bike',       es: 'E-Bike' },
+    'nav-about':       { en: 'About',        es: 'Nosotros' },
+    'nav-call':        { en: 'Call Us',      es: 'Llámanos' },
+    // HERO
+    'hero-sub':        { en: 'Honest. Reliable. Passionate.', es: 'Honestos. Confiables. Apasionados.' },
+    'hero-tagline':    { en: 'Riders from Riverside to the OC coast make the drive — because when you want it done right, you find the right mechanic.', es: 'Ciclistas de Riverside hasta la costa de OC hacen el viaje — porque cuando quieres que se haga bien, encuentras al mecánico correcto.' },
+    'btn-call':        { en: 'Call the Shop',  es: 'Llama a la Tienda' },
+    'btn-services':    { en: 'View Services',  es: 'Ver Servicios' },
+    'stat-google':     { en: 'Google Rating',  es: 'Calificación Google' },
+    'stat-yelp':       { en: 'Yelp Rating',    es: 'Calificación Yelp' },
+    'stat-reviews':    { en: 'Combined Reviews', es: 'Reseñas Combinadas' },
+    'stat-years':      { en: 'Years Serving SoCal', es: 'Años Sirviendo SoCal' },
+    // TRUST BAR
+    'trust-1':         { en: 'Honest Recommendations', es: 'Recomendaciones Honestas' },
+    'trust-2':         { en: 'Quality Repairs',         es: 'Reparaciones de Calidad' },
+    'trust-3':         { en: 'Fair Pricing',             es: 'Precios Justos' },
+    'trust-4':         { en: 'Pickup & Delivery Available', es: 'Recogida y Entrega Disponible' },
+    'trust-5':         { en: 'E-Bike Specialists',       es: 'Especialistas en E-Bikes' },
+    // SERVICES
+    'svc-label':       { en: 'What We Do',   es: 'Lo Que Hacemos' },
+    'svc-title':       { en: 'FULL-SERVICE BIKE REPAIR', es: 'REPARACIÓN COMPLETA DE BICICLETAS' },
+    'svc-desc':        { en: 'From a flat fix to a complete overhaul — we handle it all. Every job gets the same attention, whether it\'s a kid\'s first bike or a race build.', es: 'Desde reparar un pinchazo hasta una revisión completa — lo manejamos todo. Cada trabajo recibe la misma atención, ya sea la primera bici de un niño o una bicicleta de carreras.' },
+    'svc1-name':       { en: 'Tune-Ups',     es: 'Afinaciones' },
+    'svc1-desc':       { en: 'Keep your bike running like new. We clean, adjust, and inspect everything that matters.', es: 'Mantén tu bicicleta como nueva. Limpiamos, ajustamos e inspeccionamos todo lo que importa.' },
+    'svc2-name':       { en: 'Wheels',       es: 'Ruedas' },
+    'svc2-desc':       { en: 'Truing, builds, and tubeless conversions. We work on all wheel sizes and standards.', es: 'Centrado, construcción y conversiones tubeless. Trabajamos con todos los tamaños y estándares.' },
+    'svc3-name':       { en: 'Brakes',       es: 'Frenos' },
+    'svc3-desc':       { en: 'Hydraulic or mechanical — we bleed, adjust, and replace. Stopping power you can trust.', es: 'Hidráulicos o mecánicos — sangramos, ajustamos y reemplazamos. Potencia de frenado confiable.' },
+    'svc4-name':       { en: 'Drivetrain',   es: 'Transmisión' },
+    'svc4-desc':       { en: 'Chain, cassette, chainrings, derailleurs. We diagnose shift issues and fix them right the first time.', es: 'Cadena, cassette, platos, desviadores. Diagnosticamos y reparamos problemas de cambio a la primera.' },
+    'svc5-name':       { en: 'Suspension',   es: 'Suspensión' },
+    'svc5-desc':       { en: 'Fork and rear shock service by a mechanic who rides. Proper setup makes everything else better.', es: 'Servicio de horquilla y amortiguador por un mecánico que monta. Un ajuste correcto lo mejora todo.' },
+    'svc6-name':       { en: 'À La Carte',   es: 'Servicios Individuales' },
+    'svc6-desc':       { en: 'Just need one thing done? Flat fix, cable swap, bar tape, headset press — we handle individual jobs too.', es: '¿Solo necesitas una cosa? Pinchazos, cables, cinta de manillar — también hacemos trabajos individuales.' },
+    // EBIKE
+    'ebike-badge':     { en: 'E-Bike Specialists', es: 'Especialistas en E-Bikes' },
+    'ebike-title':     { en: 'WE SERVICE MOST MAJOR E-BIKE BRANDS', es: 'SERVICIAMOS LAS PRINCIPALES MARCAS DE E-BIKES' },
+    'ebike-desc':      { en: 'E-bikes are a different animal. They need a mechanic who understands the electronics, not just the drivetrain. Ozzy does both.', es: 'Las e-bikes son otra cosa. Necesitan un mecánico que entienda la electrónica, no solo la transmisión. Ozzy sabe las dos.' },
+    // ABOUT
+    'about-label':     { en: 'Our Story',    es: 'Nuestra Historia' },
+    'about-title':     { en: 'BUILT ON HONEST SERVICE', es: 'CONSTRUIDOS SOBRE SERVICIO HONESTO' },
+    'about-p1':        { en: 'FENIX Cycling has called Yorba Linda home since 2012 — on the edge of Anaheim Hills and Corona, where the roads meet the trails and serious riders live. <strong>Riders from Riverside to the OC coast make the drive,</strong> because when you want it done right, you find the right mechanic.', es: 'FENIX Cycling lleva en Yorba Linda desde 2012 — en el límite de Anaheim Hills y Corona, donde las carreteras se encuentran con los senderos y viven los ciclistas serios. <strong>Ciclistas de Riverside hasta la costa de OC hacen el viaje,</strong> porque cuando quieres que se haga bien, encuentras al mecánico correcto.' },
+    'about-p2':        { en: 'That mechanic is <strong>Ozzy Hernandez</strong>. He didn\'t just grow up around bikes — he raced them professionally in the United States for five years. Cycling isn\'t a job at FENIX. It\'s a family tradition, and that heritage shows in every repair that leaves this shop.', es: 'Ese mecánico es <strong>Ozzy Hernandez</strong>. No solo creció rodeado de bicicletas — las corrió profesionalmente en los Estados Unidos durante cinco años. El ciclismo no es un trabajo en FENIX. Es una tradición familiar, y esa herencia se ve en cada reparación que sale de este taller.' },
+    'about-p3':        { en: 'Ozzy brings a racer\'s eye to every build and service — the kind of attention to detail that only comes from knowing exactly what\'s at stake when a bike fails on the road or trail.', es: 'Ozzy aporta el ojo de un corredor a cada construcción y servicio — ese nivel de detalle que solo viene de saber exactamente lo que está en juego cuando una bicicleta falla en la carretera o el sendero.' },
+    'about-p4':        { en: 'No upsells you don\'t need. No mystery charges. Just the honest workmanship that earned us a <strong>5.0 on Google</strong> and <strong>4.8 on Yelp</strong> across 240+ combined reviews.', es: 'Sin ventas adicionales que no necesitas. Sin cargos misteriosos. Solo el trabajo honesto que nos ganó un <strong>5.0 en Google</strong> y <strong>4.8 en Yelp</strong> con más de 240 reseñas combinadas.' },
+    'about-slogan':    { en: 'We ride. We wrench. We care. And we treat every bike like our own.', es: 'Montamos. Reparamos. Nos importa. Y tratamos cada bicicleta como si fuera nuestra.' },
+    'cred1-title':     { en: '5.0 Google · 4.8 Yelp', es: '5.0 Google · 4.8 Yelp' },
+    'cred1-desc':      { en: '240+ combined reviews across platforms. Yorba Linda\'s highest-rated bike shop.', es: 'Más de 240 reseñas combinadas. La tienda de bicicletas mejor calificada de Yorba Linda.' },
+    'cred2-title':     { en: 'Schedule Pickup & Delivery', es: 'Agenda Recogida y Entrega' },
+    'cred2-desc':      { en: 'We\'ll come to you. Online scheduling for pickup and delivery on qualifying repairs — launching soon.', es: 'Vamos a ti. Agenda en línea para recogida y entrega en reparaciones calificadas — próximamente.' },
+    'cred3-title':     { en: 'Serving SoCal Since 2012', es: 'Sirviendo al Sur de California desde 2012' },
+    'cred3-desc':      { en: 'Yorba Linda · Anaheim Hills · Corona · Riverside · and beyond.', es: 'Yorba Linda · Anaheim Hills · Corona · Riverside · y más.' },
+    // CTA
+    'cta-title':       { en: 'READY TO RIDE AGAIN?', es: '¿LISTO PARA VOLVER A MONTAR?' },
+    'cta-desc':        { en: 'Drop by the shop or give us a call. We\'ll take it from there.', es: 'Pasa por la tienda o llámanos. Nosotros nos encargamos.' },
+    'cta-btn':         { en: 'Call the Shop', es: 'Llama a la Tienda' },
+    // FOOTER
+    'footer-tagline':  { en: 'Honest. Reliable. Passionate.', es: 'Honestos. Confiables. Apasionados.' },
+    'footer-svc':      { en: 'Services',     es: 'Servicios' },
+    'footer-visit':    { en: 'Visit',        es: 'Visítanos' },
+    'footer-motto':    { en: 'Ride More. Worry Less. We\'ve Got Your Back.', es: 'Monta Más. Preocúpate Menos. Te Respaldamos.' },
+    'footer-copy':     { en: '© 2026 FENIX Cycling. All rights reserved.', es: '© 2026 FENIX Cycling. Todos los derechos reservados.' },
+  };
+
+  // Map translation keys to DOM selectors
+  const domMap = [
+    ['nav-services',  '[href="#services"]'],
+    ['nav-ebike',     '[href="#ebike"]'],
+    ['nav-about',     '[href="#about"]'],
+    ['hero-sub',      '.hero-sub'],
+    ['hero-tagline',  '.hero-tagline'],
+    ['btn-call',      '.hero-actions .btn-primary'],
+    ['btn-services',  '.hero-actions .btn-secondary'],
+    ['svc-label',     '#services .section-label'],
+    ['svc-title',     '#services .section-title'],
+    ['svc-desc',      '#services .section-desc'],
+    ['ebike-title',   '#ebike .section-title'],
+    ['ebike-desc',    '#ebike .section-desc'],
+    ['about-label',   '#about .section-label'],
+    ['about-title',   '#about .section-title'],
+    ['cta-title',     '#cta h2'],
+    ['cta-desc',      '#cta p'],
+    ['cta-btn',       '#cta .btn-white'],
+    ['footer-tagline','footer .footer-tagline'],
+    ['footer-svc',    'footer .footer-col:nth-child(2) h5'],
+    ['footer-visit',  'footer .footer-col:nth-child(3) h5'],
+    ['footer-motto',  '.footer-motto'],
+    ['footer-copy',   '.footer-bottom p'],
+  ];
+
+  // Stat labels
+  const statLabels = document.querySelectorAll('.stat-label');
+  const statKeys = ['stat-google','stat-yelp','stat-reviews','stat-years'];
+
+  // Trust items
+  const trustItems = document.querySelectorAll('.trust-item');
+  const trustKeys = ['trust-1','trust-2','trust-3','trust-4','trust-5'];
+
+  // Service names + descs
+  const svcCards = document.querySelectorAll('.service-card');
+  const svcKeys = [
+    ['svc1-name','svc1-desc'],['svc2-name','svc2-desc'],
+    ['svc3-name','svc3-desc'],['svc4-name','svc4-desc'],
+    ['svc5-name','svc5-desc'],['svc6-name','svc6-desc'],
+  ];
+
+  // About paragraphs
+  const aboutPs = document.querySelectorAll('#about .about-body p');
+  const aboutPKeys = ['about-p1','about-p2','about-p3','about-p4'];
+
+  // Credential cards
+  const credCards = document.querySelectorAll('.credential-card');
+  const credKeys = [
+    ['cred1-title','cred1-desc'],
+    ['cred2-title','cred2-desc'],
+    ['cred3-title','cred3-desc'],
+  ];
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    const L = currentLang;
+    document.getElementById('lang-label').textContent = L === 'en' ? 'ES' : 'EN';
+
+    // Standard DOM map
+    domMap.forEach(([key, sel]) => {
+      const el = document.querySelector(sel);
+      if (el && translations[key]) el.innerHTML = translations[key][L];
+    });
+
+    // Stat labels
+    statLabels.forEach((el, i) => {
+      if (statKeys[i] && translations[statKeys[i]]) el.textContent = translations[statKeys[i]][L];
+    });
+
+    // Trust items (has ✓ icon span inside)
+    trustItems.forEach((el, i) => {
+      if (trustKeys[i] && translations[trustKeys[i]]) {
+        const icon = el.querySelector('.trust-icon');
+        el.textContent = translations[trustKeys[i]][L];
+        if (icon) el.prepend(icon);
+      }
+    });
+
+    // Service cards
+    svcCards.forEach((card, i) => {
+      if (!svcKeys[i]) return;
+      const nameEl = card.querySelector('.service-name');
+      const descEl = card.querySelector('.service-desc');
+      if (nameEl && translations[svcKeys[i][0]]) nameEl.textContent = translations[svcKeys[i][0]][L];
+      if (descEl && translations[svcKeys[i][1]]) descEl.textContent = translations[svcKeys[i][1]][L];
+    });
+
+    // About paragraphs
+    aboutPs.forEach((el, i) => {
+      if (aboutPKeys[i] && translations[aboutPKeys[i]]) el.innerHTML = translations[aboutPKeys[i]][L];
+    });
+
+    // About slogan
+    const sloganEl = document.querySelector('.about-slogan p');
+    if (sloganEl) sloganEl.innerHTML = translations['about-slogan'][L];
+
+    // Credential cards
+    credCards.forEach((card, i) => {
+      if (!credKeys[i]) return;
+      const h4 = card.querySelector('h4');
+      const p  = card.querySelector('p');
+      if (h4 && translations[credKeys[i][0]]) h4.textContent = translations[credKeys[i][0]][L];
+      if (p  && translations[credKeys[i][1]]) p.textContent  = translations[credKeys[i][1]][L];
+    });
+
+    // Nav call CTA
+    const navCta = document.querySelector('nav .nav-cta');
+    if (navCta) navCta.textContent = translations['nav-call'][L];
+
+    // E-bike badge
+    const ebikeBadge = document.querySelector('.ebike-badge');
+    if (ebikeBadge) ebikeBadge.innerHTML = `<span>⚡</span> ${translations['ebike-badge'][L]}`;
+  }
+</script>
+<script>
+  const TOTAL = 20;
   let current = 0;
 
   function goTo(idx) {
@@ -1269,6 +1590,9 @@
 
   setInterval(() => goTo((current + 1) % TOTAL), 4800);
 </script>
+
+<!-- ── TIDIO LIVE CHAT ─────────────────────────────────────── -->
+<script src="//code.tidio.co/v0uumteegiz9ukmarmp06luufcz6qajo.js" async></script>
 
 </body>
 </html>
