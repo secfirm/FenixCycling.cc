@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="version" content="v1.0.0" />
+  <meta name="deployment-date" content="07-08-2026" />
   <title>FENIX Cycling — Yorba Linda's Bike Shop</title>
   <meta name="description" content="Honest bike repair, quality workmanship, and fair pricing in Yorba Linda, CA. Serving riders from Riverside to the OC coast since 2012." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,7 +73,6 @@
       align-items: center;
       gap: 10px;
     }
-    /* ── SWAP: replace .nav-logo-icon SVG with your actual logo file ── */
     .nav-logo-icon {
       width: 36px;
       height: 36px;
@@ -85,10 +86,21 @@
       line-height: 1;
     }
     .nav-logo-text span { color: var(--red); }
+    .nav-version {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .nav-links {
       display: flex;
       gap: 32px;
       list-style: none;
+      align-items: center;
     }
     .nav-links a {
       font-size: 0.85rem;
@@ -137,22 +149,32 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(135deg, rgba(212,43,43,0.12) 0%, transparent 50%),
-        linear-gradient(to bottom, rgba(15,15,15,0.3) 0%, rgba(15,15,15,0.85) 100%),
-        #1a1a1a;
+      background-image: url('logo-icon.svg');
+      background-size: 60%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       z-index: 0;
     }
-    /* Ember particle canvas */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(212,43,43,0.12) 0%, transparent 50%),
+        linear-gradient(to bottom, rgba(15,15,15,0.4) 0%, rgba(15,15,15,0.9) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
     #ember-canvas {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
     }
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       padding: 80px 0 100px;
       text-align: center;
       display: flex;
@@ -178,12 +200,6 @@
       width: 32px;
       height: 2px;
       background: #FFA500;
-    }
-    .hero-logo-mark {
-      width: 420px;
-      max-width: 90vw;
-      height: auto;
-      margin-bottom: 8px;
     }
     .hero-headline {
       font-family: var(--ff-display);
@@ -392,28 +408,6 @@
       margin-top: 1px;
     }
 
-    /* ─── COMING SOON ────────────────────────────────────── */
-    #coming-soon {
-      position: relative;
-      overflow: hidden;
-      background-image: url('Man_sitting_on_park_bench.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-    #coming-soon::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: 1;
-      pointer-events: none;
-    }
-    #coming-soon .container {
-      position: relative;
-      z-index: 2;
-    }
-
     /* ─── E-BIKE FEATURE ─────────────────────────────────── */
     #ebike {
       padding: 80px 0;
@@ -452,6 +446,8 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      align-items: center;
+      text-align: center;
     }
     .ebike-checklist li {
       display: flex;
@@ -483,6 +479,7 @@
       color: var(--light);
       text-transform: uppercase;
     }
+
     /* ─── REVIEW CAROUSELS ───────────────────────────────── */
     .review-carousel {
       width: 100%;
@@ -627,52 +624,6 @@
       margin: 0;
     }
     .about-slogan p span { color: var(--red); }
-    .about-sidebar {
-      position: sticky;
-      top: 100px;
-    }
-    .credential-card {
-      background: var(--dark);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 32px;
-      margin-bottom: 16px;
-    }
-    .credential-card h4 {
-      font-family: var(--ff-display);
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .credential-card p {
-      font-size: 0.85rem;
-      color: var(--light);
-      line-height: 1.6;
-    }
-    .coming-soon-card {
-      border-color: var(--red);
-      position: relative;
-    }
-    .coming-soon-badge {
-      display: inline-block;
-      background: var(--red);
-      color: var(--white);
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 2px;
-      margin-bottom: 10px;
-    }
-    .stars {
-      color: #FFB800;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    /* sidebar review carousel handled by .review-carousel above */
 
     /* ─── CTA BAND ───────────────────────────────────────── */
     #cta {
@@ -725,6 +676,14 @@
       gap: 48px;
       flex-wrap: wrap;
       margin-bottom: 48px;
+    }
+    .footer-brand-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 4px;
+      object-fit: cover;
+      margin-bottom: 20px;
+      display: block;
     }
     .footer-brand .footer-logo {
       font-family: var(--ff-display);
@@ -780,12 +739,11 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero-stats { gap: 28px; }
-      .ebike-inner { grid-template-columns: 1fr; }
       .about-inner { grid-template-columns: 1fr; }
-      .about-sidebar { position: static; }
       .cta-inner { flex-direction: column; text-align: center; }
       .trust-inner { gap: 24px; }
     }
+
     /* ─── FIRE TEXT ──────────────────────────────────────── */
     .fire-text-wrap {
       position: relative;
@@ -811,14 +769,12 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: letterFlicker var(--dur) var(--delay) cubic-bezier(0.43, 0.13, 0.23, 0.96) infinite;
-      /* letter-spacing handled by wrap */
     }
     .fire-letter.space {
       display: inline-block;
       width: 0.35em;
       -webkit-text-fill-color: transparent;
     }
-    /* ─── AMBER PARTICLES RISING ─────────────────────────── */
     .fire-text-wrap::before {
       content: '';
       position: absolute;
@@ -829,7 +785,7 @@
       height: 400px;
       pointer-events: none;
       z-index: 10;
-      background-image: 
+      background-image:
         radial-gradient(circle, #ffaa00 2px, transparent 2px),
         radial-gradient(circle, #ff8800 1.5px, transparent 1.5px),
         radial-gradient(circle, #ffcc00 1px, transparent 1px),
@@ -840,7 +796,7 @@
         radial-gradient(circle, #ff8800 1.5px, transparent 1.5px),
         radial-gradient(circle, #ffcc00 1px, transparent 1px),
         radial-gradient(circle, #ff9900 2.5px, transparent 2.5px);
-      background-size: 
+      background-size:
         80px 120px,
         100px 150px,
         120px 180px,
@@ -851,7 +807,7 @@
         105px 160px,
         115px 170px,
         85px 135px;
-      background-position: 
+      background-position:
         0 0,
         20px 30px,
         40px 60px,
@@ -862,7 +818,7 @@
         15px 25px,
         55px 90px,
         45px 70px;
-      animation: 
+      animation:
         rise1 6s linear infinite,
         rise2 7s linear infinite 1s,
         rise3 5.5s linear infinite 2s,
@@ -886,76 +842,76 @@
     @keyframes rise9 { 0% { transform: translateX(-50%) translateY(400px); opacity: 0; } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { transform: translateX(-50%) translateY(-100px); opacity: 0; } }
     @keyframes rise10 { 0% { transform: translateX(-50%) translateY(400px); opacity: 0; } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { transform: translateX(-50%) translateY(-100px); opacity: 0; } }
     @keyframes letterFlicker {
-      0%   { 
-        filter: drop-shadow(0 0 8px rgba(255,100,0,0.8)) drop-shadow(0 0 18px rgba(255,50,0,0.5)) drop-shadow(0 0 35px rgba(220,20,0,0.3)); 
-        opacity: 0.95; 
-        transform: scaleY(1) scaleX(1) skewX(0deg); 
+      0%   {
+        filter: drop-shadow(0 0 8px rgba(255,100,0,0.8)) drop-shadow(0 0 18px rgba(255,50,0,0.5)) drop-shadow(0 0 35px rgba(220,20,0,0.3));
+        opacity: 0.95;
+        transform: scaleY(1) scaleX(1) skewX(0deg);
         text-shadow: 0 0 20px rgba(255,200,0,0.6), 0 0 40px rgba(255,100,0,0.4), 0 0 60px rgba(220,50,0,0.2);
       }
-      5%   { 
-        filter: drop-shadow(0 0 4px rgba(255,80,0,0.6)) drop-shadow(0 0 10px rgba(200,40,0,0.3)); 
-        opacity: 0.82; 
-        transform: scaleY(0.98) scaleX(0.99) skewX(0.8deg); 
+      5%   {
+        filter: drop-shadow(0 0 4px rgba(255,80,0,0.6)) drop-shadow(0 0 10px rgba(200,40,0,0.3));
+        opacity: 0.82;
+        transform: scaleY(0.98) scaleX(0.99) skewX(0.8deg);
         text-shadow: 0 0 12px rgba(255,120,0,0.4), 0 0 24px rgba(220,50,0,0.2);
       }
-      12%  { 
-        filter: drop-shadow(0 0 14px rgba(255,180,0,1)) drop-shadow(0 0 32px rgba(255,100,0,0.9)) drop-shadow(0 0 50px rgba(255,60,0,0.5)); 
-        opacity: 1; 
-        transform: scaleY(1.05) scaleX(1.02) skewX(-1.2deg); 
+      12%  {
+        filter: drop-shadow(0 0 14px rgba(255,180,0,1)) drop-shadow(0 0 32px rgba(255,100,0,0.9)) drop-shadow(0 0 50px rgba(255,60,0,0.5));
+        opacity: 1;
+        transform: scaleY(1.05) scaleX(1.02) skewX(-1.2deg);
         text-shadow: 0 0 28px rgba(255,220,0,0.8), 0 0 56px rgba(255,120,0,0.6), 0 0 80px rgba(220,60,0,0.3);
       }
-      18%  { 
-        filter: drop-shadow(0 0 6px rgba(255,110,0,0.7)) drop-shadow(0 0 14px rgba(220,50,0,0.4)); 
-        opacity: 0.89; 
-        transform: scaleY(1.01) scaleX(1.01) skewX(0.5deg); 
+      18%  {
+        filter: drop-shadow(0 0 6px rgba(255,110,0,0.7)) drop-shadow(0 0 14px rgba(220,50,0,0.4));
+        opacity: 0.89;
+        transform: scaleY(1.01) scaleX(1.01) skewX(0.5deg);
         text-shadow: 0 0 16px rgba(255,140,0,0.5), 0 0 32px rgba(220,60,0,0.3);
       }
-      26%  { 
-        filter: drop-shadow(0 0 3px rgba(255,70,0,0.5)) drop-shadow(0 0 8px rgba(200,30,0,0.3)); 
-        opacity: 0.78; 
-        transform: scaleY(0.97) scaleX(0.98) skewX(1.1deg); 
+      26%  {
+        filter: drop-shadow(0 0 3px rgba(255,70,0,0.5)) drop-shadow(0 0 8px rgba(200,30,0,0.3));
+        opacity: 0.78;
+        transform: scaleY(0.97) scaleX(0.98) skewX(1.1deg);
         text-shadow: 0 0 10px rgba(255,100,0,0.3), 0 0 20px rgba(200,40,0,0.15);
       }
-      35%  { 
-        filter: drop-shadow(0 0 16px rgba(255,190,0,1)) drop-shadow(0 0 38px rgba(255,110,0,0.9)) drop-shadow(0 0 60px rgba(255,70,0,0.6)); 
-        opacity: 0.98; 
-        transform: scaleY(1.04) scaleX(1.03) skewX(-0.8deg); 
+      35%  {
+        filter: drop-shadow(0 0 16px rgba(255,190,0,1)) drop-shadow(0 0 38px rgba(255,110,0,0.9)) drop-shadow(0 0 60px rgba(255,70,0,0.6));
+        opacity: 0.98;
+        transform: scaleY(1.04) scaleX(1.03) skewX(-0.8deg);
         text-shadow: 0 0 32px rgba(255,240,0,0.8), 0 0 64px rgba(255,130,0,0.6), 0 0 90px rgba(230,70,0,0.4);
       }
-      44%  { 
-        filter: drop-shadow(0 0 7px rgba(255,130,0,0.75)) drop-shadow(0 0 16px rgba(230,60,0,0.5)); 
-        opacity: 0.93; 
-        transform: scaleY(1.02) scaleX(1) skewX(-0.3deg); 
+      44%  {
+        filter: drop-shadow(0 0 7px rgba(255,130,0,0.75)) drop-shadow(0 0 16px rgba(230,60,0,0.5));
+        opacity: 0.93;
+        transform: scaleY(1.02) scaleX(1) skewX(-0.3deg);
         text-shadow: 0 0 18px rgba(255,160,0,0.55), 0 0 36px rgba(230,70,0,0.35);
       }
-      54%  { 
-        filter: drop-shadow(0 0 11px rgba(255,160,0,0.95)) drop-shadow(0 0 28px rgba(255,90,0,0.8)) drop-shadow(0 0 45px rgba(220,50,0,0.4)); 
-        opacity: 0.97; 
-        transform: scaleY(1.03) scaleX(1.02) skewX(0.7deg); 
+      54%  {
+        filter: drop-shadow(0 0 11px rgba(255,160,0,0.95)) drop-shadow(0 0 28px rgba(255,90,0,0.8)) drop-shadow(0 0 45px rgba(220,50,0,0.4));
+        opacity: 0.97;
+        transform: scaleY(1.03) scaleX(1.02) skewX(0.7deg);
         text-shadow: 0 0 26px rgba(255,200,0,0.7), 0 0 52px rgba(255,110,0,0.5), 0 0 75px rgba(220,60,0,0.3);
       }
-      63%  { 
-        filter: drop-shadow(0 0 5px rgba(255,100,0,0.65)) drop-shadow(0 0 12px rgba(210,45,0,0.4)); 
-        opacity: 0.85; 
-        transform: scaleY(0.99) scaleX(0.99) skewX(0.9deg); 
+      63%  {
+        filter: drop-shadow(0 0 5px rgba(255,100,0,0.65)) drop-shadow(0 0 12px rgba(210,45,0,0.4));
+        opacity: 0.85;
+        transform: scaleY(0.99) scaleX(0.99) skewX(0.9deg);
         text-shadow: 0 0 14px rgba(255,120,0,0.45), 0 0 28px rgba(210,50,0,0.25);
       }
-      73%  { 
-        filter: drop-shadow(0 0 13px rgba(255,170,0,0.98)) drop-shadow(0 0 35px rgba(255,100,0,0.85)) drop-shadow(0 0 55px rgba(240,60,0,0.5)); 
-        opacity: 1; 
-        transform: scaleY(1.04) scaleX(1.01) skewX(-1deg); 
+      73%  {
+        filter: drop-shadow(0 0 13px rgba(255,170,0,0.98)) drop-shadow(0 0 35px rgba(255,100,0,0.85)) drop-shadow(0 0 55px rgba(240,60,0,0.5));
+        opacity: 1;
+        transform: scaleY(1.04) scaleX(1.01) skewX(-1deg);
         text-shadow: 0 0 30px rgba(255,210,0,0.75), 0 0 60px rgba(255,120,0,0.55), 0 0 85px rgba(230,70,0,0.35);
       }
-      85%  { 
-        filter: drop-shadow(0 0 6px rgba(255,120,0,0.7)) drop-shadow(0 0 15px rgba(220,55,0,0.45)); 
-        opacity: 0.91; 
-        transform: scaleY(1) scaleX(1.01) skewX(-0.4deg); 
+      85%  {
+        filter: drop-shadow(0 0 6px rgba(255,120,0,0.7)) drop-shadow(0 0 15px rgba(220,55,0,0.45));
+        opacity: 0.91;
+        transform: scaleY(1) scaleX(1.01) skewX(-0.4deg);
         text-shadow: 0 0 17px rgba(255,150,0,0.5), 0 0 34px rgba(220,65,0,0.3);
       }
-      100% { 
-        filter: drop-shadow(0 0 8px rgba(255,100,0,0.8)) drop-shadow(0 0 18px rgba(255,50,0,0.5)) drop-shadow(0 0 35px rgba(220,20,0,0.3)); 
-        opacity: 0.95; 
-        transform: scaleY(1) scaleX(1) skewX(0deg); 
+      100% {
+        filter: drop-shadow(0 0 8px rgba(255,100,0,0.8)) drop-shadow(0 0 18px rgba(255,50,0,0.5)) drop-shadow(0 0 35px rgba(220,20,0,0.3));
+        opacity: 0.95;
+        transform: scaleY(1) scaleX(1) skewX(0deg);
         text-shadow: 0 0 20px rgba(255,200,0,0.6), 0 0 40px rgba(255,100,0,0.4), 0 0 60px rgba(220,50,0,0.2);
       }
     }
@@ -969,11 +925,14 @@
     <a href="#hero" class="nav-logo">
       <img src="logo-lockup.svg" alt="FENIX Cycling" class="nav-logo-icon" style="width:140px; height:auto;" />
     </a>
+    <div class="nav-version">
+      <span>v1.0.0</span> · <span>07-08-2026</span>
+    </div>
     <ul class="nav-links">
-      <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
-      <li><a href="#ebike" data-en="E-Bike" data-es="E-Bike">E-Bike</a></li>
-      <li><a href="#about" data-en="About" data-es="Nosotros">About</a></li>
-      <li><a href="tel:+1" class="nav-cta" data-en="Call Us" data-es="Llámanos">Call Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#ebike">E-Bike</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="tel:+17140692502" class="nav-cta">Call Us</a></li>
       <li>
         <button id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
           <span id="lang-label">ES</span>
@@ -988,7 +947,6 @@
   <div class="hero-bg"></div>
   <canvas id="ember-canvas"></canvas>
   <div class="container hero-content">
-    <img src="logo-icon.svg" alt="FENIX Cycling Phoenix" class="hero-logo-mark" />
 
     <div class="fire-text-wrap">
       <span class="fire-letter" style="--dur:2.1s;--delay:0.0s">F</span><span class="fire-letter" style="--dur:1.8s;--delay:0.15s">E</span><span class="fire-letter" style="--dur:2.4s;--delay:0.05s">N</span><span class="fire-letter" style="--dur:1.6s;--delay:0.22s">I</span><span class="fire-letter" style="--dur:2.2s;--delay:0.10s">X</span><span class="fire-letter space"> </span><span class="fire-letter" style="--dur:1.9s;--delay:0.18s">C</span><span class="fire-letter" style="--dur:2.3s;--delay:0.08s">Y</span><span class="fire-letter" style="--dur:1.7s;--delay:0.25s">C</span><span class="fire-letter" style="--dur:2.0s;--delay:0.12s">L</span><span class="fire-letter" style="--dur:2.5s;--delay:0.03s">I</span><span class="fire-letter" style="--dur:1.85s;--delay:0.20s">N</span><span class="fire-letter" style="--dur:2.15s;--delay:0.07s">G</span>
@@ -996,30 +954,30 @@
 
     <div class="hero-eyebrow">Yorba Linda, CA — Est. 2012</div>
 
-    <p class="hero-sub" data-en="Honest. Reliable. Passionate." data-es="Honestos. Confiables. Apasionados.">Honest. Reliable. Passionate.</p>
+    <p class="hero-sub">Honest. Reliable. Passionate.</p>
     <p class="hero-tagline">
-      <strong data-en="Riders from Riverside to the OC coast make the drive" data-es="Ciclistas de Riverside hasta la costa de OC hacen el viaje">Riders from Riverside to the OC coast make the drive</strong> — <span data-en="because when you want it done right, you find the right mechanic." data-es="porque cuando quieres que se haga bien, encuentras al mecánico correcto.">because when you want it done right, you find the right mechanic.</span>
+      <strong>Riders from Riverside to the OC coast make the drive</strong> — because when you want it done right, you find the right mechanic.
     </p>
     <div class="hero-actions">
-      <a href="tel:+1" class="btn-primary" data-en="Call the Shop" data-es="Llama a la Tienda">Call the Shop</a>
-      <a href="#services" class="btn-secondary" data-en="View Services" data-es="Ver Servicios">View Services</a>
+      <a href="tel:+17140692502" class="btn-primary">Call the Shop</a>
+      <a href="#services" class="btn-secondary">View Services</a>
     </div>
     <div class="hero-stats">
       <div>
         <div class="stat-num">5.0<span>★</span></div>
-        <div class="stat-label" data-en="Google Rating" data-es="Calificación Google">Google Rating</div>
+        <div class="stat-label">Google Rating</div>
       </div>
       <div>
         <div class="stat-num">4.8<span>★</span></div>
-        <div class="stat-label" data-en="Yelp Rating" data-es="Calificación Yelp">Yelp Rating</div>
+        <div class="stat-label">Yelp Rating</div>
       </div>
       <div>
         <div class="stat-num">240<span>+</span></div>
-        <div class="stat-label" data-en="Combined Reviews" data-es="Reseñas Combinadas">Combined Reviews</div>
+        <div class="stat-label">Combined Reviews</div>
       </div>
       <div>
         <div class="stat-num">12<span>+</span></div>
-        <div class="stat-label" data-en="Years Serving SoCal" data-es="Años Sirviendo SoCal">Years Serving SoCal</div>
+        <div class="stat-label">Years Serving SoCal</div>
       </div>
     </div>
   </div>
@@ -1144,15 +1102,38 @@
   </div>
 </section>
 
+<!-- ── E-BIKE SPECIALISTS ──────────────────────────────────────────────── -->
+<section id="ebike">
+  <div class="container ebike-inner">
+    <div class="ebike-content">
+      <div class="ebike-badge">
+        <span>⚡</span> E-Bike Specialists
+      </div>
+      <h2 class="section-title">WE SERVICE<br>MOST MAJOR<br>E-BIKE BRANDS</h2>
+      <p class="section-desc" style="margin-top:16px;">E-bikes are a different animal. They need a mechanic who understands the electronics, not just the drivetrain. Ozzy does both.</p>
+      <ul class="ebike-checklist">
+        <li><span class="check-dot"></span> Diagnostics</li>
+        <li><span class="check-dot"></span> Motor Service</li>
+        <li><span class="check-dot"></span> Battery Testing</li>
+        <li><span class="check-dot"></span> Electrical Repairs</li>
+        <li><span class="check-dot"></span> Tune-Ups</li>
+      </ul>
+    </div>
+    <div class="ebike-visual">
+      <div class="ebike-visual-text">E-Bike Service</div>
+    </div>
+  </div>
+</section>
+
 <!-- ── ABOUT (OUR STORY) ──────────────────────────────────────────────── -->
 <section id="about">
-  <video 
-    class="about-bg-video" 
-    autoplay 
-    muted 
-    loop 
+  <video
+    class="about-bg-video"
+    autoplay
+    muted
+    loop
     playsinline>
-    <source src="Riding_hard_and_fast_Crea.mp4" type="video/mp4">
+    <source src="0708.mp4" type="video/mp4">
   </video>
   <div class="container about-inner">
     <div class="about-body">
@@ -1178,50 +1159,33 @@
     <div class="review-carousel-wrapper">
       <div class="review-carousel" id="reviews-carousel">
         <div class="review-track" id="reviews-track">
-          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text">My motor went out on my 2023 Santa Cruz Heckler. <span class="review-highlight">My bike feels brand new again.</span></p><div class="review-author">— Matt K., Lake Forest, CA</div></div>
-          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text">My derailleur was bent. <span class="review-highlight">Never once tried to sell me something I didn't need.</span></p><div class="review-author">— Tuan D., Anaheim, CA</div></div>
-          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Fenix Cycling is the best bike shop I've ever been to.</span></p><div class="review-author">— Eric N., Local Guide</div></div>
-          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">A much needed throwback to when expertise and integrity ruled.</span></p><div class="review-author">— Mark G., Anaheim, CA</div></div>
+          <!-- GOOGLE REVIEWS (10) -->
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text">My motor went out on my 2023 Santa Cruz Heckler. <span class="review-highlight">My bike feels brand new again.</span></p><div class="review-author">— Matt Kimura</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Honest and friendly. Top notch service.</span></p><div class="review-author">— Cindy Trotter</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Really helpful and friendly they went above and beyond</span> the service I needed and reasonable prices.</p><div class="review-author">— Juan Serrano</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">This shop is great for fixing e-bikes. So easy to deal with, affordable, and they do it quickly.</span></p><div class="review-author">— Corinne DeLaPena</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Great experience at Fenix cycling. Ozzy is super friendly and very knowledgeable.</span></p><div class="review-author">— Xavier Ordonez</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Best bike repair place there is around here!!! Plus, very reasonable prices!</span></p><div class="review-author">— James Tucker</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text">Nobody else would take care of my flat tire on my e-bike. <span class="review-highlight">This gentleman was busy, but he took the time to get me on the road.</span></p><div class="review-author">— Justin Bell</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Ozzy helped me select a bike that was best for my lifestyle and commute.</span> Very friendly, welcoming bike shop!</p><div class="review-author">— Sarah Rocha</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Great customer service. Excellent workmanship. Turnaround time is great.</span></p><div class="review-author">— Christian Da Costa</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot google"></span> Google</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">I've been going to Fenix Cycling for years. They are excellent for a tune-up and repairs.</span> They make you feel like family.</p><div class="review-author">— Robert Sanchez</div></div>
+
+          <!-- YELP REVIEWS (10) -->
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">I brought in a Cannondale road frame for Ozzy and his crew to build.</span> My project bike came out perfect and looking exactly as I had envisioned it to be.</p><div class="review-author">— James J., Elite Guide</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Ozzy's prices for basic tune ups ($50) and super tune ups ($80) are far superior to the competition.</span> The level of detail he spends on your bikes is amazing.</p><div class="review-author">— James J., Elite Guide</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">This shop is great. Super relaxed atmosphere, helpful and knowledgeable staff.</span> HUGE array of Bianchi bikes. Highly recommend.</p><div class="review-author">— Christopher N., Yorba Linda</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Great service. Bike felt totally different after tune up. Very affordable. Also bike was cleaned!!!!!</span></p><div class="review-author">— Zain E., Huntington Beach</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">My Cérvelo R5 was born here. Ozzy is the brilliant owner of this bike shop.</span> There are very few people and bike shops that you can trust. Ozzy has integrity.</p><div class="review-author">— Wes O., Carlsbad</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Great guys and excellent service! Fair pricing! Complete small business package!</span> Great customer service & quality of work.</p><div class="review-author">— John J., Yorba Linda</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Ozzy and team are exceptional! Ozzy has expertise, attention to detail, honesty and integrity.</span> A much needed throwback to when expertise and integrity ruled.</p><div class="review-author">— Mark G., Anaheim</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Just bought my dream bike! Service, craftsmanship, honesty and great people make FENIX CYCLING truly elite.</span> I LOVE this place!</p><div class="review-author">— Mark G. (Big Mark), Anaheim</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">On time fair price</span> I recommend this business for bike repairs open Sundays. Easy to reach in YL.</p><div class="review-author">— Dave M., Yorba Linda</div></div>
+          <div class="review-card"><div class="review-header"><div class="review-platform"><span class="platform-dot yelp"></span> Yelp</div><div class="review-stars">★★★★★</div></div><p class="review-text"><span class="review-highlight">Great service. Very informative, helpful and attentive.</span> Brought an older bike in for service and the team took care of me!</p><div class="review-author">— Felix N., Westminster</div></div>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ── E-BIKE SPECIALISTS ──────────────────────────────────────────────── -->
-<section id="ebike">
-  <div class="container ebike-inner">
-    <div class="ebike-content">
-      <div class="ebike-badge">
-        <span>⚡</span> E-Bike Specialists
-      </div>
-      <h2 class="section-title">WE SERVICE<br>MOST MAJOR<br>E-BIKE BRANDS</h2>
-      <p class="section-desc" style="margin-top:16px;">E-bikes are a different animal. They need a mechanic who understands the electronics, not just the drivetrain. Ozzy does both.</p>
-      <ul class="ebike-checklist">
-        <li><span class="check-dot"></span> Diagnostics</li>
-        <li><span class="check-dot"></span> Motor Service</li>
-        <li><span class="check-dot"></span> Battery Testing</li>
-        <li><span class="check-dot"></span> Electrical Repairs</li>
-        <li><span class="check-dot"></span> Tune-Ups</li>
-      </ul>
-    </div>
-    <div class="ebike-visual">
-      <div class="ebike-visual-text">E-Bike Service</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── COMING SOON: SCHEDULE PICKUP & DELIVERY ──────────────────────────────────────────────── -->
-<section id="coming-soon">
-  <div class="container">
-    <div style="text-align: center; padding: 80px 0;">
-      <span class="section-label">Coming Soon</span>
-      <h2 class="section-title">SCHEDULE PICKUP<br>&amp; DELIVERY</h2>
-      <p class="section-desc" style="margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">We'll come to you. Online scheduling for pickup and delivery on qualifying repairs — launching soon.</p>
-    </div>
-  </div>
-</section>
-
 </section>
 
 <!-- ── CTA BAND ────────────────────────────────────────────── -->
@@ -1231,7 +1195,7 @@
       <h2>READY TO<br>RIDE AGAIN?</h2>
       <p>Drop by the shop or give us a call. We'll take it from there.</p>
     </div>
-    <a href="tel:+1" class="btn-white">Call the Shop</a>
+    <a href="tel:+17140692502" class="btn-white">Call the Shop</a>
   </div>
 </section>
 
@@ -1240,6 +1204,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
+        <img src="ozzy-headshot.jpg" alt="Ozzy Hernandez, FENIX Cycling Owner" class="footer-brand-image" />
         <div class="footer-logo">FEN<span>I</span>X CYCLING</div>
         <div class="footer-tagline">Honest. Reliable. Passionate.</div>
       </div>
@@ -1258,7 +1223,7 @@
         <h5>Visit</h5>
         <ul>
           <li>Yorba Linda, CA</li>
-          <li><a href="tel:+1">Call Us</a></li>
+          <li><a href="tel:+17140692502">Call Us</a></li>
           <li>fenixcycling.cc</li>
           <li>@FenixCycling</li>
         </ul>
@@ -1392,192 +1357,7 @@
   })();
 </script>
 
-<!-- ── LANGUAGE TOGGLE ────────────────────────────────────── -->
-<script>
-  let currentLang = 'en';
-
-  const translations = {
-    // NAV
-    'nav-services':    { en: 'Services',     es: 'Servicios' },
-    'nav-ebike':       { en: 'E-Bike',       es: 'E-Bike' },
-    'nav-about':       { en: 'About',        es: 'Nosotros' },
-    'nav-call':        { en: 'Call Us',      es: 'Llámanos' },
-    // HERO
-    'hero-sub':        { en: 'Honest. Reliable. Passionate.', es: 'Honestos. Confiables. Apasionados.' },
-    'hero-tagline':    { en: 'Riders from Riverside to the OC coast make the drive — because when you want it done right, you find the right mechanic.', es: 'Ciclistas de Riverside hasta la costa de OC hacen el viaje — porque cuando quieres que se haga bien, encuentras al mecánico correcto.' },
-    'btn-call':        { en: 'Call the Shop',  es: 'Llama a la Tienda' },
-    'btn-services':    { en: 'View Services',  es: 'Ver Servicios' },
-    'stat-google':     { en: 'Google Rating',  es: 'Calificación Google' },
-    'stat-yelp':       { en: 'Yelp Rating',    es: 'Calificación Yelp' },
-    'stat-reviews':    { en: 'Combined Reviews', es: 'Reseñas Combinadas' },
-    'stat-years':      { en: 'Years Serving SoCal', es: 'Años Sirviendo SoCal' },
-    // TRUST BAR
-    'trust-1':         { en: 'Honest Recommendations', es: 'Recomendaciones Honestas' },
-    'trust-2':         { en: 'Quality Repairs',         es: 'Reparaciones de Calidad' },
-    'trust-3':         { en: 'Fair Pricing',             es: 'Precios Justos' },
-    'trust-4':         { en: 'Pickup & Delivery Available', es: 'Recogida y Entrega Disponible' },
-    'trust-5':         { en: 'E-Bike Specialists',       es: 'Especialistas en E-Bikes' },
-    // SERVICES
-    'svc-label':       { en: 'What We Do',   es: 'Lo Que Hacemos' },
-    'svc-title':       { en: 'FULL-SERVICE BIKE REPAIR', es: 'REPARACIÓN COMPLETA DE BICICLETAS' },
-    'svc-desc':        { en: 'From a flat fix to a complete overhaul — we handle it all. Every job gets the same attention, whether it\'s a kid\'s first bike or a race build.', es: 'Desde reparar un pinchazo hasta una revisión completa — lo manejamos todo. Cada trabajo recibe la misma atención, ya sea la primera bici de un niño o una bicicleta de carreras.' },
-    'svc1-name':       { en: 'Tune-Ups',     es: 'Afinaciones' },
-    'svc1-desc':       { en: 'Keep your bike running like new. We clean, adjust, and inspect everything that matters.', es: 'Mantén tu bicicleta como nueva. Limpiamos, ajustamos e inspeccionamos todo lo que importa.' },
-    'svc2-name':       { en: 'Wheels',       es: 'Ruedas' },
-    'svc2-desc':       { en: 'Truing, builds, and tubeless conversions. We work on all wheel sizes and standards.', es: 'Centrado, construcción y conversiones tubeless. Trabajamos con todos los tamaños y estándares.' },
-    'svc3-name':       { en: 'Brakes',       es: 'Frenos' },
-    'svc3-desc':       { en: 'Hydraulic or mechanical — we bleed, adjust, and replace. Stopping power you can trust.', es: 'Hidráulicos o mecánicos — sangramos, ajustamos y reemplazamos. Potencia de frenado confiable.' },
-    'svc4-name':       { en: 'Drivetrain',   es: 'Transmisión' },
-    'svc4-desc':       { en: 'Chain, cassette, chainrings, derailleurs. We diagnose shift issues and fix them right the first time.', es: 'Cadena, cassette, platos, desviadores. Diagnosticamos y reparamos problemas de cambio a la primera.' },
-    'svc5-name':       { en: 'Suspension',   es: 'Suspensión' },
-    'svc5-desc':       { en: 'Fork and rear shock service by a mechanic who rides. Proper setup makes everything else better.', es: 'Servicio de horquilla y amortiguador por un mecánico que monta. Un ajuste correcto lo mejora todo.' },
-    'svc6-name':       { en: 'À La Carte',   es: 'Servicios Individuales' },
-    'svc6-desc':       { en: 'Just need one thing done? Flat fix, cable swap, bar tape, headset press — we handle individual jobs too.', es: '¿Solo necesitas una cosa? Pinchazos, cables, cinta de manillar — también hacemos trabajos individuales.' },
-    // EBIKE
-    'ebike-badge':     { en: 'E-Bike Specialists', es: 'Especialistas en E-Bikes' },
-    'ebike-title':     { en: 'WE SERVICE MOST MAJOR E-BIKE BRANDS', es: 'SERVICIAMOS LAS PRINCIPALES MARCAS DE E-BIKES' },
-    'ebike-desc':      { en: 'E-bikes are a different animal. They need a mechanic who understands the electronics, not just the drivetrain. Ozzy does both.', es: 'Las e-bikes son otra cosa. Necesitan un mecánico que entienda la electrónica, no solo la transmisión. Ozzy sabe las dos.' },
-    // ABOUT
-    'about-label':     { en: 'Our Story',    es: 'Nuestra Historia' },
-    'about-title':     { en: 'BUILT ON HONEST SERVICE', es: 'CONSTRUIDOS SOBRE SERVICIO HONESTO' },
-    'about-p1':        { en: 'FENIX Cycling has called Yorba Linda home since 2012 — on the edge of Anaheim Hills and Corona, where the roads meet the trails and serious riders live. <strong>Riders from Riverside to the OC coast make the drive,</strong> because when you want it done right, you find the right mechanic.', es: 'FENIX Cycling lleva en Yorba Linda desde 2012 — en el límite de Anaheim Hills y Corona, donde las carreteras se encuentran con los senderos y viven los ciclistas serios. <strong>Ciclistas de Riverside hasta la costa de OC hacen el viaje,</strong> porque cuando quieres que se haga bien, encuentras al mecánico correcto.' },
-    'about-p2':        { en: 'That mechanic is <strong>Ozzy Hernandez</strong>. He didn\'t just grow up around bikes — he raced them professionally in the United States for five years. Cycling isn\'t a job at FENIX. It\'s a family tradition, and that heritage shows in every repair that leaves this shop.', es: 'Ese mecánico es <strong>Ozzy Hernandez</strong>. No solo creció rodeado de bicicletas — las corrió profesionalmente en los Estados Unidos durante cinco años. El ciclismo no es un trabajo en FENIX. Es una tradición familiar, y esa herencia se ve en cada reparación que sale de este taller.' },
-    'about-p3':        { en: 'Ozzy brings a racer\'s eye to every build and service — the kind of attention to detail that only comes from knowing exactly what\'s at stake when a bike fails on the road or trail.', es: 'Ozzy aporta el ojo de un corredor a cada construcción y servicio — ese nivel de detalle que solo viene de saber exactamente lo que está en juego cuando una bicicleta falla en la carretera o el sendero.' },
-    'about-p4':        { en: 'No upsells you don\'t need. No mystery charges. Just the honest workmanship that earned us a <strong>5.0 on Google</strong> and <strong>4.8 on Yelp</strong> across 240+ combined reviews.', es: 'Sin ventas adicionales que no necesitas. Sin cargos misteriosos. Solo el trabajo honesto que nos ganó un <strong>5.0 en Google</strong> y <strong>4.8 en Yelp</strong> con más de 240 reseñas combinadas.' },
-    'about-slogan':    { en: 'We ride. We wrench. We care. And we treat every bike like our own.', es: 'Montamos. Reparamos. Nos importa. Y tratamos cada bicicleta como si fuera nuestra.' },
-    'cred1-title':     { en: '5.0 Google · 4.8 Yelp', es: '5.0 Google · 4.8 Yelp' },
-    'cred1-desc':      { en: '240+ combined reviews across platforms. Yorba Linda\'s highest-rated bike shop.', es: 'Más de 240 reseñas combinadas. La tienda de bicicletas mejor calificada de Yorba Linda.' },
-    'cred2-title':     { en: 'Schedule Pickup & Delivery', es: 'Agenda Recogida y Entrega' },
-    'cred2-desc':      { en: 'We\'ll come to you. Online scheduling for pickup and delivery on qualifying repairs — launching soon.', es: 'Vamos a ti. Agenda en línea para recogida y entrega en reparaciones calificadas — próximamente.' },
-    'cred3-title':     { en: 'Serving SoCal Since 2012', es: 'Sirviendo al Sur de California desde 2012' },
-    'cred3-desc':      { en: 'Yorba Linda · Anaheim Hills · Corona · Riverside · and beyond.', es: 'Yorba Linda · Anaheim Hills · Corona · Riverside · y más.' },
-    // CTA
-    'cta-title':       { en: 'READY TO RIDE AGAIN?', es: '¿LISTO PARA VOLVER A MONTAR?' },
-    'cta-desc':        { en: 'Drop by the shop or give us a call. We\'ll take it from there.', es: 'Pasa por la tienda o llámanos. Nosotros nos encargamos.' },
-    'cta-btn':         { en: 'Call the Shop', es: 'Llama a la Tienda' },
-    // FOOTER
-    'footer-tagline':  { en: 'Honest. Reliable. Passionate.', es: 'Honestos. Confiables. Apasionados.' },
-    'footer-svc':      { en: 'Services',     es: 'Servicios' },
-    'footer-visit':    { en: 'Visit',        es: 'Visítanos' },
-    'footer-motto':    { en: 'Ride More. Worry Less. We\'ve Got Your Back.', es: 'Monta Más. Preocúpate Menos. Te Respaldamos.' },
-    'footer-copy':     { en: '© 2026 FENIX Cycling. All rights reserved.', es: '© 2026 FENIX Cycling. Todos los derechos reservados.' },
-  };
-
-  // Map translation keys to DOM selectors
-  const domMap = [
-    ['nav-services',  '[href="#services"]'],
-    ['nav-ebike',     '[href="#ebike"]'],
-    ['nav-about',     '[href="#about"]'],
-    ['hero-sub',      '.hero-sub'],
-    ['hero-tagline',  '.hero-tagline'],
-    ['btn-call',      '.hero-actions .btn-primary'],
-    ['btn-services',  '.hero-actions .btn-secondary'],
-    ['svc-label',     '#services .section-label'],
-    ['svc-title',     '#services .section-title'],
-    ['svc-desc',      '#services .section-desc'],
-    ['ebike-title',   '#ebike .section-title'],
-    ['ebike-desc',    '#ebike .section-desc'],
-    ['about-label',   '#about .section-label'],
-    ['about-title',   '#about .section-title'],
-    ['cta-title',     '#cta h2'],
-    ['cta-desc',      '#cta p'],
-    ['cta-btn',       '#cta .btn-white'],
-    ['footer-tagline','footer .footer-tagline'],
-    ['footer-svc',    'footer .footer-col:nth-child(2) h5'],
-    ['footer-visit',  'footer .footer-col:nth-child(3) h5'],
-    ['footer-motto',  '.footer-motto'],
-    ['footer-copy',   '.footer-bottom p'],
-  ];
-
-  // Stat labels
-  const statLabels = document.querySelectorAll('.stat-label');
-  const statKeys = ['stat-google','stat-yelp','stat-reviews','stat-years'];
-
-  // Trust items
-  const trustItems = document.querySelectorAll('.trust-item');
-  const trustKeys = ['trust-1','trust-2','trust-3','trust-4','trust-5'];
-
-  // Service names + descs
-  const svcCards = document.querySelectorAll('.service-card');
-  const svcKeys = [
-    ['svc1-name','svc1-desc'],['svc2-name','svc2-desc'],
-    ['svc3-name','svc3-desc'],['svc4-name','svc4-desc'],
-    ['svc5-name','svc5-desc'],['svc6-name','svc6-desc'],
-  ];
-
-  // About paragraphs
-  const aboutPs = document.querySelectorAll('#about .about-body p');
-  const aboutPKeys = ['about-p1','about-p2','about-p3','about-p4'];
-
-  // Credential cards
-  const credCards = document.querySelectorAll('.credential-card');
-  const credKeys = [
-    ['cred1-title','cred1-desc'],
-    ['cred2-title','cred2-desc'],
-    ['cred3-title','cred3-desc'],
-  ];
-
-  function toggleLang() {
-    currentLang = currentLang === 'en' ? 'es' : 'en';
-    const L = currentLang;
-    document.getElementById('lang-label').textContent = L === 'en' ? 'ES' : 'EN';
-
-    // Standard DOM map
-    domMap.forEach(([key, sel]) => {
-      const el = document.querySelector(sel);
-      if (el && translations[key]) el.innerHTML = translations[key][L];
-    });
-
-    // Stat labels
-    statLabels.forEach((el, i) => {
-      if (statKeys[i] && translations[statKeys[i]]) el.textContent = translations[statKeys[i]][L];
-    });
-
-    // Trust items (has ✓ icon span inside)
-    trustItems.forEach((el, i) => {
-      if (trustKeys[i] && translations[trustKeys[i]]) {
-        const icon = el.querySelector('.trust-icon');
-        el.textContent = translations[trustKeys[i]][L];
-        if (icon) el.prepend(icon);
-      }
-    });
-
-    // Service cards
-    svcCards.forEach((card, i) => {
-      if (!svcKeys[i]) return;
-      const nameEl = card.querySelector('.service-name');
-      const descEl = card.querySelector('.service-desc');
-      if (nameEl && translations[svcKeys[i][0]]) nameEl.textContent = translations[svcKeys[i][0]][L];
-      if (descEl && translations[svcKeys[i][1]]) descEl.textContent = translations[svcKeys[i][1]][L];
-    });
-
-    // About paragraphs
-    aboutPs.forEach((el, i) => {
-      if (aboutPKeys[i] && translations[aboutPKeys[i]]) el.innerHTML = translations[aboutPKeys[i]][L];
-    });
-
-    // About slogan
-    const sloganEl = document.querySelector('.about-slogan p');
-    if (sloganEl) sloganEl.innerHTML = translations['about-slogan'][L];
-
-    // Credential cards
-    credCards.forEach((card, i) => {
-      if (!credKeys[i]) return;
-      const h4 = card.querySelector('h4');
-      const p  = card.querySelector('p');
-      if (h4 && translations[credKeys[i][0]]) h4.textContent = translations[credKeys[i][0]][L];
-      if (p  && translations[credKeys[i][1]]) p.textContent  = translations[credKeys[i][1]][L];
-    });
-
-    // Nav call CTA
-    const navCta = document.querySelector('nav .nav-cta');
-    if (navCta) navCta.textContent = translations['nav-call'][L];
-
-    // E-bike badge
-    const ebikeBadge = document.querySelector('.ebike-badge');
-    if (ebikeBadge) ebikeBadge.innerHTML = `<span>⚡</span> ${translations['ebike-badge'][L]}`;
-  }
-</script>
+<!-- ── REVIEWS CAROUSEL AUTO-ADVANCE ──────────────────────────────── -->
 <script>
   const TOTAL = 20;
   let current = 0;
@@ -1585,9 +1365,6 @@
   function goTo(idx) {
     current = idx;
     document.getElementById('reviews-track').style.transform = `translateX(-${idx * 100}%)`;
-    document.querySelectorAll('#reviews-dots .review-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === idx);
-    });
   }
 
   setInterval(() => goTo((current + 1) % TOTAL), 4800);
