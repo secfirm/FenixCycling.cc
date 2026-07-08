@@ -1372,6 +1372,11 @@
 
 <!-- ── TIDIO LIVE CHAT ─────────────────────────────────────── -->
 <script src="//code.tidio.co/v0uumteegiz9ukmarmp06luufcz6qajo.js" async></script>
+<script>
+  window.addEventListener('beforeunload', function () {
+    localStorage.removeItem('tidio_state_v0uumteegiz9ukmarmp06luufcz6qajo');
+  });
+</script>
 
 </body>
 </html>
