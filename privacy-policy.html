@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="version" content="v1.0.0" />
+  <title>Privacy Policy — FENIX Cycling</title>
+  <meta name="description" content="FENIX Cycling Privacy Policy. How we protect your data and communicate with you about your bike repairs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --red:     #D42B2B;
+      --red-dim: #9E1F1F;
+      --black:   #0F0F0F;
+      --dark:    #1A1A1A;
+      --mid:     #2A2A2A;
+      --border:  #333333;
+      --light:   #AAAAAA;
+      --white:   #F5F5F5;
+      --ff-display: 'Bebas Neue', sans-serif;
+      --ff-body:    'Inter', sans-serif;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--red); text-decoration: underline; transition: color 0.2s; }
+    a:hover { color: var(--red-dim); }
+
+    /* ─── UTILITY ────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .red { color: var(--red); }
+    .section-label {
+      font-family: var(--ff-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,15,15,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      line-height: 1;
+      text-decoration: none;
+    }
+    .nav-logo-text span { color: var(--red); }
+    .nav-logo-text:hover { opacity: 0.8; }
+
+    /* ─── MAIN CONTENT ───────────────────────────────────── */
+    .page-header {
+      padding: 80px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--ff-display);
+      font-size: 3rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .page-header p {
+      font-size: 1.1rem;
+      color: var(--light);
+      max-width: 600px;
+    }
+
+    .content {
+      padding: 60px 0;
+    }
+    .content h2 {
+      font-family: var(--ff-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: var(--white);
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 12px;
+    }
+    .content h2:first-child {
+      margin-top: 0;
+    }
+    .content h3 {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      color: var(--red);
+    }
+    .content p {
+      margin-bottom: 16px;
+      color: var(--white);
+      line-height: 1.8;
+    }
+    .content ul, .content ol {
+      margin: 16px 0 16px 24px;
+      color: var(--white);
+    }
+    .content li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      background: var(--mid);
+      border-left: 3px solid var(--red);
+      padding: 16px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 60px;
+      color: var(--light);
+      font-size: 0.9rem;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-contact h3 {
+      font-family: var(--ff-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .footer-contact p {
+      line-height: 1.8;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 2rem; }
+      .content h2 { font-size: 1.4rem; }
+      .footer-content { flex-direction: column; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">
+          <svg class="nav-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="#D42B2B" stroke-width="2"/>
+            <path d="M 50 15 Q 65 30 70 50 Q 65 70 50 85 Q 35 70 30 50 Q 35 30 50 15" fill="#D42B2B" opacity="0.8"/>
+          </svg>
+          <div class="nav-logo-text">FENIX <span>CYCLING</span></div>
+        </a>
+        <div style="display: flex; gap: 20px; font-size: 0.85rem;">
+          <a href="privacy-policy.html" style="color: var(--red);">Privacy</a>
+          <a href="terms-and-conditions.html" style="color: var(--light);">Terms</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>How FENIX Cycling protects your information and communicates with you about your repair service.</p>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+    <div class="content">
+
+      <h2>Your Privacy Matters</h2>
+      <p>At FENIX Cycling, located at 23681 E La Palma Ave, Suite B, Yorba Linda, CA 92887, we take your privacy seriously. This policy explains how we collect, use, and protect your personal information when you bring your bike to us for service or interact with us online.</p>
+
+      <h2>Information We Collect</h2>
+      <h3>When you bring your bike to our shop:</h3>
+      <ul>
+        <li><strong>Your name and contact information</strong> – phone number, email, physical address</li>
+        <li><strong>Bike information</strong> – color, brand, model (to identify your bike during service)</li>
+        <li><strong>Service details</strong> – what repairs or maintenance you're requesting</li>
+        <li><strong>Payment information</strong> – method of payment (we do not store credit card details)</li>
+      </ul>
+
+      <h3>Communication preferences:</h3>
+      <ul>
+        <li><strong>Phone number</strong> – to contact you about your repair status, pickup, and service updates</li>
+        <li><strong>Email address</strong> – to send repair estimates and pickup notifications</li>
+        <li><strong>SMS opt-in</strong> – if you consent to receive text messages about your service (see SMS section below)</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use your information to:</p>
+      <ul>
+        <li>Identify and manage your repair work order</li>
+        <li>Communicate repair status, estimates, and pickup schedules</li>
+        <li>Process payment for services rendered</li>
+        <li>Send service reminders and promotional offers (only if you opt in)</li>
+        <li>Improve our service quality and customer experience</li>
+      </ul>
+
+      <h2>SMS and Text Notifications</h2>
+      <div class="highlight">
+        <h3>SMS Opt-In & Communication</h3>
+        <p>FENIX Cycling sends transactional SMS messages to customers who provide their mobile phone number at check-in. These messages include:</p>
+        <ul style="margin-top: 12px;">
+          <li>Repair status updates (inspection complete, parts ordered, ready for pickup)</li>
+          <li>Repair estimates and quote confirmations</li>
+          <li>Pickup notifications</li>
+          <li>Service reminders for future maintenance</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>Message frequency:</strong> Typically 1–4 messages per repair job, depending on complexity. Additional promotional messages sent only if you opt in.</p>
+        <p style="margin-top: 12px;"><strong>How to opt out:</strong> Reply <strong>STOP</strong> to any text message to unsubscribe from SMS communications. To re-enable SMS, contact us at 714-333-0401 or service@fenixcycling.cc.</p>
+        <p style="margin-top: 12px;"><strong>Help request:</strong> Reply <strong>HELP</strong> to any text message for assistance, or contact us directly.</p>
+        <p style="margin-top: 12px;"><strong>Standard message rates apply</strong> – your mobile carrier's SMS charges may apply.</p>
+      </div>
+
+      <h2>Data Security</h2>
+      <p>We protect your information using industry-standard security measures, including:</p>
+      <ul>
+        <li>Secure storage of customer records in our point-of-sale system (Lightspeed Retail)</li>
+        <li>Encrypted email communication via Google Workspace</li>
+        <li>Secure SMS delivery via Twilio (authenticated and encrypted)</li>
+        <li>Limited access to customer data (staff only, as needed for service)</li>
+      </ul>
+      <p>However, no system is completely secure. We encourage you to safeguard your personal information and contact us immediately if you suspect any unauthorized access.</p>
+
+      <h2>Who We Share Your Information With</h2>
+      <p>We only share your information with trusted service providers necessary to deliver our services:</p>
+      <ul>
+        <li><strong>Lightspeed Retail</strong> – our POS and service management system</li>
+        <li><strong>Google Workspace</strong> – email and business communication</li>
+        <li><strong>Twilio</strong> – SMS notification delivery</li>
+        <li><strong>Payment processors</strong> – for credit/debit card transactions</li>
+      </ul>
+      <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access your personal information held by FENIX Cycling</li>
+        <li>Request correction of inaccurate information</li>
+        <li>Request deletion of your information (subject to retention requirements)</li>
+        <li>Opt out of promotional communications and SMS messages</li>
+      </ul>
+      <p>To exercise these rights, contact us at <strong>service@fenixcycling.cc</strong> or <strong>714-333-0401</strong>.</p>
+
+      <h2>Retention of Information</h2>
+      <p>We retain your information for as long as necessary to provide service, comply with legal obligations, and maintain a record of work performed on your bike. Typically, customer records are retained for 3–5 years after your last service visit. You may request deletion of your information at any time.</p>
+
+      <h2>Updates to This Policy</h2>
+      <p>We may update this privacy policy from time to time to reflect changes in our practices or applicable law. We will notify you of material changes by posting the updated policy here or by contacting you directly.</p>
+
+      <h2>Contact Us</h2>
+      <p>If you have questions about this privacy policy, our data practices, or wish to exercise your privacy rights, contact us:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:service@fenixcycling.cc">service@fenixcycling.cc</a></li>
+        <li><strong>Phone:</strong> <a href="tel:714-333-0401">714-333-0401</a></li>
+        <li><strong>Address:</strong> 23681 E La Palma Ave, Suite B, Yorba Linda, CA 92887</li>
+      </ul>
+
+      <p style="margin-top: 60px; color: var(--light); font-size: 0.9rem;"><strong>Last updated:</strong> August 2026</p>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-contact">
+          <h3>FENIX Cycling</h3>
+          <p>23681 E La Palma Ave, Suite B<br>Yorba Linda, CA 92887<br><a href="tel:714-333-0401">714-333-0401</a></p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-and-conditions.html">Terms & Conditions</a>
+        </div>
+      </div>
+      <p style="margin-top: 40px; color: var(--light); border-top: 1px solid var(--border); padding-top: 24px;">We ride. We wrench. We care. © 2012–2026 FENIX Cycling</p>
+    </div>
+  </footer>
+
+</body>
+</html>
